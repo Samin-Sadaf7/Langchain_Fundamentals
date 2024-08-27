@@ -1,4 +1,3 @@
-#Import for deploying LLM
 import uvicorn
 from fastapi import FastAPI
 from langchain_core.output_parsers import StrOutputParser
@@ -6,7 +5,7 @@ from langchain_core.prompts import ChatPromptTemplate
 from langchain_google_genai import ChatGoogleGenerativeAI
 from langserve import add_routes
 
-#Create the prompts
+# 1. Create prompt template
 system_template = "Translate the following into {language}:"
 
 prompt_template = ChatPromptTemplate.from_messages([
@@ -14,14 +13,14 @@ prompt_template = ChatPromptTemplate.from_messages([
     ('user', '{text}')
 ])
 
-# Create the model
+# 2. Create model
 model = ChatGoogleGenerativeAI(model="gemini-pro", convert_system_message_to_human=True)
 
-#Create parser
+# 3. Create parser
 parser = StrOutputParser()
 
-#Create chain
-chain = prompt_template | model | parser 
+# 4. Create chain
+chain = prompt_template | model | parser
 
 app = FastAPI(
     title="My LLM API",
@@ -29,11 +28,14 @@ app = FastAPI(
     version="1.0",
 )
 
+
 add_routes(
     app,
     chain,
     path="/chain"
+    
 )
 
-if __name__ == "__main__":
-    uvicorn.run(app, host="localhost", port=8080)
+
+if __name__=="__main__":
+    uvicorn.run(app, host="localhost", port=8000)
