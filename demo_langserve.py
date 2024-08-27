@@ -23,3 +23,14 @@ parser = StrOutputParser()
 #Create chain
 chain = prompt_template | model | parser 
 
+app = FastAPI(
+    title="My LLM API",
+    description="My first LLM API",
+    version="1.0",
+)
+
+add_routes(
+    app,
+    chain,
+    path="/chain"
+)
