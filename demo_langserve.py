@@ -16,3 +16,6 @@ prompt_template = ChatPromptTemplate.from_messages([
 
 # Create the model
 model = ChatGoogleGenerativeAI(model="gemini-pro", convert_system_message_to_human=True)
+
+#Create parser
+parser = StrOutputParser()
