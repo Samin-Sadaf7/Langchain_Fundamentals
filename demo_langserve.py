@@ -19,3 +19,7 @@ model = ChatGoogleGenerativeAI(model="gemini-pro", convert_system_message_to_hum
 
 #Create parser
 parser = StrOutputParser()
+
+#Create chain
+chain = prompt_template | model | parser 
+
