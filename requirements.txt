@@ -7,3 +7,6 @@ langchain_google_genai
 scikit-learn
 pypdf
 chromadb
+langchainhub
+langchain-chroma
+beautifulsoup4
