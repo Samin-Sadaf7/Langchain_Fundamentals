@@ -10,3 +10,5 @@ chromadb
 langchainhub
 langchain-chroma
 beautifulsoup4
+sentence_transformers
+torch
