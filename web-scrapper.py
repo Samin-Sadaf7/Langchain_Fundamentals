@@ -18,5 +18,6 @@ for quote in quotes:
 for author in authors:
     print(author.text)
 
+# Print each author with corresponding quote
 for author, quote in zip(authors,quotes):
     print(f"{author.text} said : {quote.text}")
