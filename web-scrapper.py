@@ -1,3 +1,5 @@
+import csv
+
 import requests
 from bs4 import BeautifulSoup
 
@@ -21,3 +23,10 @@ for author in authors:
 # Print each author with corresponding quote
 for author, quote in zip(authors,quotes):
     print(f"{author.text} said : {quote.text}")
+
+file = open("scrappeed_code.csv", "w")
+writer = csv.writer(file)
+
+for author, quote in zip(authors,quotes):
+    writer.writerow([author.text, quote.text])
+file.close()
