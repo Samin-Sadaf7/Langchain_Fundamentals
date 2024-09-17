@@ -8,7 +8,7 @@ soup = BeautifulSoup(page_to_scrape.text, "html.parser")
 
 # Find all the quotes and authors
 quotes = soup.find_all("span", attrs={'class': 'text'})
-authors = soup.find_all("span", attrs={'class': 'author'})
+authors = soup.find_all("small", attrs={'class': 'author', 'itemprop': 'author'})
 
 # Print each quote
 for quote in quotes:
